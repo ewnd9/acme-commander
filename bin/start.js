@@ -1,9 +1,6 @@
-#!/usr/bin/gjs
-// Sets up the environment and runs the application.
+#!/usr/bin/env cgjs
 
-const path = String(new Error().stack).replace(/^.*?@(.*):[\s\S]*/, "$1");
-const dirname = imports.gi.Gio.File.new_for_path(path).resolve_relative_path("../..").get_path();
-imports.searchPath.push(dirname);
-new imports.src.app.Gjs.Require.Require().require();
-new imports.src.app.Gjs.GtkDom.GtkDom().require();
+const { GtkDom } = require("../src/app/Gjs/GtkDom");
+new GtkDom().require();
+
 require("../src/app");
