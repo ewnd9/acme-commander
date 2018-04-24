@@ -32,7 +32,9 @@
     "nullthrows": "https://github.com/makepost/nullthrows",
     "ts-for-gjs": "https://github.com/makepost/ts-for-gjs",
     "url-parse": "^1.2.0",
-    "util": "^0.10.3"
+    "util": "^0.10.3",
+    "webpack": "^4.6.0",
+    "webpack-cli": "^2.0.15"
   },
   "scripts": {
     "start": "NODE_ENV=development cgjs bin/start.js",
@@ -42,7 +44,8 @@
     "format": "tslint --fix 'bin/**/*.js' 'src/**/*.js' && tsc",
     "repl": "gjs bin/repl.js",
     "postinstall": "mkdir -p \"$npm_config_prefix\"/share/applications/ && cp bin/acme-commander.desktop \"$npm_config_prefix\"/share/applications/",
-    "preuninstall": "rm -f \"$npm_config_prefix/share/applications/acme-commander.desktop\""
+    "preuninstall": "rm -f \"$npm_config_prefix/share/applications/acme-commander.desktop\"",
+    "build:watch": "NODE_ENV=development webpack --config webpack.config.js --watch --hot"
   },
   "pre-commit": [
     "lint",
